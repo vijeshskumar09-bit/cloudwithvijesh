@@ -1,89 +1,157 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My AWS Portfolio</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #101827;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 50px 20px;
-        }
-
-        .container {
-            max-width: 650px;
-            margin: auto;
-            padding: 35px;
-            background: #1e293b;
-            border-radius: 15px;
-        }
-
-        h1 {
-            color: #38bdf8;
-        }
-
-        h2 {
-            color: #facc15;
-        }
-
-        p {
-            line-height: 1.7;
-            color: #d1d5db;
-        }
-
-        a {
-            display: inline-block;
-            padding: 12px 22px;
-            background: #0284c7;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-
-        a:hover {
-            background: #0369a1;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vijesh S Kumar — BCA student and aspiring cloud engineer. Explore cloud computing, Linux, Python and web projects.">
+  <title>Vijesh S Kumar | Aspiring Cloud Engineer</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: #101d30;
+      --panel2: #14243a;
+      --text: #edf4ff;
+      --muted: #a9b8cc;
+      --accent: #55c7ff;
+      --accent2: #8b9cff;
+      --line: rgba(177, 202, 235, .16);
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: radial-gradient(circle at 80% 0%, #172b4b 0, transparent 34%), var(--bg);
+      color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(8,17,31,.86); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: .3px; }
+    .brand span { color: var(--accent); }
+    .navlinks { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: .93rem; }
+    .navlinks a:hover { color: var(--accent); }
+    .hero { padding: 92px 0 76px; display: grid; grid-template-columns: 1.35fr .65fr; gap: 46px; align-items: center; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: .78rem; font-weight: 800; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.7rem); line-height: 1.08; margin: 14px 0 18px; letter-spacing: -2px; }
+    h1 span { background: linear-gradient(90deg, var(--accent), #b5c1ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { color: var(--muted); font-size: 1.1rem; max-width: 650px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 11px 18px; border-radius: 10px; font-weight: 750; border: 1px solid var(--line); }
+    .btn.primary { background: linear-gradient(110deg, #168bc5, #586fe5); border: 0; color: white; }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-card { padding: 26px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(25,47,75,.9), rgba(13,27,46,.9)); border-radius: 22px; box-shadow: 0 24px 70px rgba(0,0,0,.24); }
+    .orb { width: 78px; height: 78px; display: grid; place-items: center; border-radius: 22px; background: linear-gradient(135deg, #1b9bcf, #6775ed); font-size: 2rem; margin-bottom: 20px; }
+    .hero-card p { color: var(--muted); margin-bottom: 0; }
+    section { padding: 62px 0; }
+    .section-head { margin-bottom: 26px; }
+    .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 5px 0; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .about-grid, .project-grid, .skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card { background: rgba(16,29,48,.88); border: 1px solid var(--line); border-radius: 17px; padding: 23px; }
+    .card h3 { margin: 0 0 8px; }
+    .card p { color: var(--muted); margin: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+    .tag { border: 1px solid rgba(85,199,255,.24); color: #c5eaff; background: rgba(39,143,190,.10); border-radius: 999px; padding: 5px 11px; font-size: .85rem; }
+    .project-grid { grid-template-columns: repeat(2, 1fr); }
+    .project-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 12px; }
+    .status { color: #b8e6ff; background: rgba(48,153,204,.14); border: 1px solid rgba(85,199,255,.22); border-radius: 999px; padding: 3px 9px; font-size: .75rem; white-space: nowrap; }
+    .text-link { display: inline-block; color: var(--accent); font-weight: 700; margin-top: 15px; }
+    .contact { text-align: center; background: linear-gradient(135deg, rgba(22,53,83,.72), rgba(24,35,76,.65)); border: 1px solid var(--line); border-radius: 22px; padding: 38px 22px; }
+    .contact p { color: var(--muted); max-width: 600px; margin: 8px auto 22px; }
+    footer { padding: 28px 0 38px; color: var(--muted); text-align: center; font-size: .9rem; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; padding: 65px 0 45px; gap: 28px; }
+      .about-grid, .project-grid, .skill-grid { grid-template-columns: 1fr; }
+      nav { align-items: flex-start; padding: 16px 0; flex-direction: column; }
+      .navlinks { gap: 14px; }
+      section { padding: 46px 0; }
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="#home">VIJESH<span>.</span></a>
+      <div class="navlinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-    <div class="container">
-
-        <h1>Hello, I'm a BCA Student</h1>
-
-        <h2>Aspiring Cloud Engineer</h2>
-
-        <p>
-            Welcome to my personal portfolio.
-            I am learning Cloud Computing,
-            AWS, Linux and Python.
-        </p>
-
-        <h2>My Skills</h2>
-
-        <p>
-            HTML | CSS | Python | Linux | AWS
-        </p>
-
-        <h2>My Goal</h2>
-
-        <p>
-            To become a Cloud Engineer and
-            build secure and scalable cloud solutions.
-        </p>
-
-        <a href="mailto:your-email@example.com">
-            Contact Me
-        </a>
-
+  <main>
+    <div class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">BCA Student · Aspiring Cloud Engineer</div>
+        <h1>Building my path in <span>cloud & technology.</span></h1>
+        <p class="lead">Hi, I'm Vijesh S Kumar. I'm a BCA student learning cloud computing, AWS, Linux and Python. I enjoy building practical projects and developing the skills to create reliable, secure technology solutions.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore my projects</a>
+          <a class="btn" href="https://github.com/vijeshskumar09-bit" target="_blank" rel="noopener">GitHub profile ↗</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="orb">☁</div>
+        <div class="eyebrow">Current focus</div>
+        <h3>Learning by building</h3>
+        <p>Cloud fundamentals · Linux basics · Python · Web development · Cloud security</p>
+      </aside>
     </div>
 
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">A little about me</div><h2>Curious learner. Future cloud engineer.</h2><p>My goal is to turn what I learn into useful, demonstrable projects.</p></div>
+        <div class="about-grid">
+          <article class="card"><h3>Education</h3><p>Bachelor of Computer Applications (BCA) student at JSS Science and Technology University. Expected graduation: 2027.</p></article>
+          <article class="card"><h3>Career direction</h3><p>I'm working towards cloud engineering, with an interest in cloud infrastructure, deployment, automation and security.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">What I'm learning</div><h2>Skills & technologies</h2><p>These are my current learning areas; I'll update this section as I gain hands-on experience.</p></div>
+        <div class="skill-grid">
+          <article class="card"><h3>Cloud</h3><div class="tags"><span class="tag">AWS fundamentals</span><span class="tag">Amazon S3 concepts</span><span class="tag">Cloud deployment</span></div></article>
+          <article class="card"><h3>Systems & networking</h3><div class="tags"><span class="tag">Linux basics</span><span class="tag">Networking fundamentals</span><span class="tag">HTTP / DNS</span></div></article>
+          <article class="card"><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span></div></article>
+          <article class="card"><h3>Developer tools</h3><div class="tags"><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Git basics</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">Work in progress</div><h2>Projects</h2><p>Academic and practical work I'm developing and documenting.</p></div>
+        <div class="project-grid">
+          <article class="card">
+            <div class="project-top"><h3>Personal Portfolio Website</h3><span class="status">Live</span></div>
+            <p>A responsive personal website built with HTML and CSS and published using GitHub Pages.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">GitHub Pages</span></div>
+            <a class="text-link" href="https://vijeshskumar09-bit.github.io/cloudwithvijesh/" target="_blank" rel="noopener">View live website ↗</a>
+          </article>
+          <article class="card">
+            <div class="project-top"><h3>Cloud Security & Intrusion Detection</h3><span class="status">Academic project · In progress</span></div>
+            <p>A BCA major-project direction exploring machine-learning-based network intrusion detection and cloud security. Implementation details and results will be added as the work progresses.</p>
+            <div class="tags"><span class="tag">Cloud security</span><span class="tag">Machine learning</span><span class="tag">Network security</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div class="eyebrow">Let's connect</div>
+          <h2>Have a project or learning opportunity?</h2>
+          <p>I'm interested in connecting with developers, cloud professionals and people working on practical technology projects.</p>
+          <a class="btn primary" href="https://github.com/vijeshskumar09-bit" target="_blank" rel="noopener">Connect on GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 2026 Vijesh S Kumar · Built with HTML & CSS · Hosted on GitHub Pages</div></footer>
 </body>
 </html>
